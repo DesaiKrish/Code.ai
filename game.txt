@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define M 10
+int main()
+{
+    int turn=0,p1=-1,p2=M,s1=0,s2=0;
+    int game[M]={0};
+    while(1)
+    {
+        int val= rand()%11+2;
+        if(!turn)
+        {
+            turn=1;
+            if(val%2)
+            {
+                p1++;
+                game[p1]=val;
+            }
+        }
+        else
+        {
+            turn=0;
+            if(0==val%2)
+            {
+                p2--;
+                game[p2]=val;
+            }
+        }
+        if(p2+1==p2){break;}
+    }
+    for (int i=0;i<=p1;i++)
+    {
+        s1+=game[i];
+    }
+    for (int i=M-1;i>=p2;i--)
+    {
+        s2+=game[i];
+    }
+    if(s1>s2){printf("p1 wins");}
+    else {printf("p2 wins");}
+}
